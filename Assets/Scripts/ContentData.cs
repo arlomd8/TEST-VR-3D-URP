@@ -45,7 +45,7 @@ public class ContentData : ScriptableObject
     {
         get
         {
-            return speaker;
+            return $"oleh {speaker}";
         }
     }
     public string Description

@@ -15,9 +15,7 @@ MonoBehaviour:
   heading: Webinar
   title: Cara Bergaul yang Sehat (SMA/Mahasiswa)
   speaker: Feri Hartono
-  description: 'Sesi ke-2 konsultasi yang akan membahas pergaulan yang sehat untuk
-    SMA
-
-    dan Mahasiswa.'
+  description: Sesi ke-2 konsultasi yang akan membahas pergaulan yang sehat untuk
+    SMA dan Mahasiswa.
   image: {fileID: 21300000, guid: 68fc36a5dee0c934ead6c5ece9da1c00, type: 3}
   scene: Class

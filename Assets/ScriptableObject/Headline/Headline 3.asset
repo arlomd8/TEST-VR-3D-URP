@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Headline 3
   m_EditorClassIdentifier: 
   title: Cara Bergaul yang Sehat (SMA/Mahasiswa)
-  time: Sabtu,12 Des 2020 16:00-17:30 WIB
+  date: Sabtu,12 Des 2020 16:00-17:30 WIB
   image: {fileID: 21300000, guid: 68fc36a5dee0c934ead6c5ece9da1c00, type: 3}

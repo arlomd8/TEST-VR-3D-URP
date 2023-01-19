@@ -31,7 +31,6 @@ public class XRHandController : MonoBehaviour
         inputDevice = GetInputDevice();
     }
 
-    // Update is called once per frame
     void Update()
     {
         AnimateHand();

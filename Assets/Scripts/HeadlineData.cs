@@ -13,13 +13,10 @@ public class HeadlineData : ScriptableObject
 
     [SerializeField]
     [TextArea(3, 5)]
-    private string time;
+    private string date;
 
     [SerializeField]
     private Sprite image;
-
-
-
 
     public string Title
     {
@@ -28,11 +25,11 @@ public class HeadlineData : ScriptableObject
             return title;
         }
     }
-    public string Time 
+    public string Date 
     {
         get
         {
-            return time;
+            return date;
         }
     }
    
