@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
+using Photon.Pun.UtilityScripts;
 
 public class NetworkManager : MonoBehaviourPunCallbacks
 {
@@ -25,19 +26,21 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         roomOptions.MaxPlayers = 6;
         roomOptions.IsVisible = true;
         roomOptions.IsOpen = true;
-        PhotonNetwork.JoinOrCreateRoom("Room Class",roomOptions, TypedLobby.Default);
+        PhotonNetwork.JoinOrCreateRoom("Room Class", roomOptions, TypedLobby.Default);
     }
 
     public override void OnJoinedRoom()
     {
         print("Joined a Room");
+
         base.OnJoinedRoom();
     }
 
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
-        print($"{newPlayer.NickName} joined the room");
+        //print($"{newPlayer.NickName} joined the room");
         base.OnPlayerEnteredRoom(newPlayer);
+        
     }
 
 }

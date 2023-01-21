@@ -26,7 +26,7 @@ public class NetworkPlayer : MonoBehaviour
     private void Start()
     {
         photonView = GetComponent<PhotonView>();
-        RandomAvatar();
+        RandomAvatar(); //PER CLIENT BEDA
         SetupRig();
 
 
