@@ -5,6 +5,7 @@ using UnityEngine.XR;
 using UnityEngine.XR.Interaction.Toolkit;
 using Photon.Pun;
 using Unity.XR.CoreUtils;
+using System.Linq;
 
 public class NetworkPlayer : MonoBehaviour
 {
@@ -17,7 +18,7 @@ public class NetworkPlayer : MonoBehaviour
     public Animator leftHandAnimator;
 
     public List<GameObject> ava;
-    int randomAva;
+    public int randomAva;
 
     public Transform headRig;
     public Transform leftHandRig;
@@ -26,7 +27,7 @@ public class NetworkPlayer : MonoBehaviour
     private void Start()
     {
         photonView = GetComponent<PhotonView>();
-        RandomAvatar(); //PER CLIENT BEDA
+        RandomAvatar();
         SetupRig();
 
 
@@ -44,13 +45,14 @@ public class NetworkPlayer : MonoBehaviour
         if (photonView.IsMine)
         {
             head.gameObject.SetActive(false);
-            ava[randomAva].SetActive(false);
+            //ava[randomAva].SetActive(false);
 
             MapPosition(head, headRig);
             MapPosition(leftHand, leftHandRig);
             MapPosition(rightHand, rightHandRig);
             AnimateHand(InputDevices.GetDeviceAtXRNode(XRNode.RightHand), rightHandAnimator);
             AnimateHand(InputDevices.GetDeviceAtXRNode(XRNode.LeftHand), leftHandAnimator);
+
         }
     }
 
@@ -89,9 +91,11 @@ public class NetworkPlayer : MonoBehaviour
 
     void RandomAvatar()
     {
-        randomAva = Random.Range(0, ava.Count);
-        ava[randomAva].SetActive(true);
-        print(randomAva);
+        if (photonView.IsMine)
+        {
+            photonView.RPC("RPC_SendRandomAvatar", RpcTarget.AllBuffered, Random.Range(0, ava.Count));
+        }
+
     }
 
     void SetupRig()
@@ -101,4 +105,13 @@ public class NetworkPlayer : MonoBehaviour
         leftHandRig = rig.transform.Find("Camera Offset/LeftHand Controller");
         rightHandRig = rig.transform.Find("Camera Offset/RightHand Controller");
     }
+
+    [PunRPC]
+    void RPC_SendRandomAvatar(int i)
+    {
+        gameObject.GetComponent<NetworkPlayer>().randomAva = i;
+        gameObject.GetComponent<NetworkPlayer>().ava[i].SetActive(true);
+        print(gameObject.GetComponent<NetworkPlayer>().randomAva + "Terima");
+    }
+
 }

@@ -118,7 +118,7 @@ GameObject:
   - component: {fileID: 8095316346611813425}
   m_Layer: 0
   m_Name: Avatar
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -192,6 +192,7 @@ MonoBehaviour:
   - {fileID: 574183889792901524}
   - {fileID: 2548493605198769799}
   - {fileID: 4700303799481168044}
+  randomAva: 0
   headRig: {fileID: 0}
   leftHandRig: {fileID: 0}
   rightHandRig: {fileID: 0}
