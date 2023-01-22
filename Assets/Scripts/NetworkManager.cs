@@ -7,40 +7,44 @@ using Photon.Pun.UtilityScripts;
 
 public class NetworkManager : MonoBehaviourPunCallbacks
 {
-    private void Start()
-    {
-        ConnectToServer();
-    }
-
+    public List<WebinarRoom> rooms;
     public void ConnectToServer()
     {
         PhotonNetwork.ConnectUsingSettings();
-        print("Trying to connect");
+        print("Connecting");
     }
 
     public override void OnConnectedToMaster()
     {
+        InitializeRoom(UIManager.instance.sceneIndex);
         print("Connected");
         base.OnConnectedToMaster();
+        
+    }
+
+    public void InitializeRoom(int i)
+    {
+
+        WebinarRoom room = rooms[i - 1];
+        PhotonNetwork.LoadLevel(room.roomIndex);
+
+
         RoomOptions roomOptions = new RoomOptions();
-        roomOptions.MaxPlayers = 6;
-        roomOptions.IsVisible = true;
-        roomOptions.IsOpen = true;
-        PhotonNetwork.JoinOrCreateRoom("Room Class", roomOptions, TypedLobby.Default);
+        roomOptions.MaxPlayers = (byte)room.maxRoom;
+        roomOptions.IsVisible = room.isVisible;
+        roomOptions.IsOpen = room.isOpen;
+        PhotonNetwork.JoinOrCreateRoom(room.roomName, roomOptions, TypedLobby.Default);
     }
 
     public override void OnJoinedRoom()
     {
-        print("Joined a Room");
-
+        //print("Joined a Room");
         base.OnJoinedRoom();
     }
 
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
-        //print($"{newPlayer.NickName} joined the room");
         base.OnPlayerEnteredRoom(newPlayer);
-        
     }
 
 }

@@ -27,6 +27,10 @@ public class ContentData : ScriptableObject
     [SerializeField]
     private string scene;
 
+    [SerializeField]
+    private int sceneIndex;
+
+
     public string Title
     {
         get
@@ -68,6 +72,14 @@ public class ContentData : ScriptableObject
         get
         {
             return scene;
+        }
+    }
+    
+    public int SceneIndex
+    {
+        get
+        {
+            return sceneIndex;
         }
     }
 

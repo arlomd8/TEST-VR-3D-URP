@@ -17,6 +17,5 @@ public class NetworkPlayerSpawner : MonoBehaviourPunCallbacks
     {
         base.OnLeftRoom();
         PhotonNetwork.Destroy(spawnedPlayer);
-
     }
 }

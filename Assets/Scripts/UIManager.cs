@@ -25,6 +25,7 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI speakerText;
     public TextMeshProUGUI descText;
     public string sceneText;
+    public int sceneIndex;
     public Image imageContent;
 
     public GameObject joinButton, panelContent;
@@ -50,24 +51,16 @@ public class UIManager : MonoBehaviour
             child.transform.SetParent(parentHeadline.transform);
         }
     }
-
-    public void Update()
-    {
-       
-        //if (SceneManager.GetActiveScene().name != "ChooseMode")
-        //{
-        //    //forward.transform.eulerAngles = new Vector3(0, camera.eulerAngles.y, 0);
-        //}
-    }
     public void ShowPanelData(ContentData content)
     {
-        //panelContent.transform.eulerAngles = new Vector3(0, forward.eulerAngles.y, 0);
+       
         contentData = content;
         descText.text = content.Description;
         headingText.text = content.Heading;
         titleText.text = content.Title;
         speakerText.text = content.Speaker;
         sceneText = content.Scene;
+        sceneIndex = content.SceneIndex;
         imageContent.sprite = content.Image;
 
         panelContent.SetActive(true);
@@ -81,7 +74,8 @@ public class UIManager : MonoBehaviour
         SceneManager.LoadScene(sceneName);
     }
 
-    public void JoinButton() { ChangeScene(sceneText); }
+
+    //public void JoinButton() { ChangeScene(sceneText); }
 
     public void HidePanelData()
     {

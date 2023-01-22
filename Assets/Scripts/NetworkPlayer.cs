@@ -63,24 +63,6 @@ public class NetworkPlayer : MonoBehaviour
 
         animator.SetFloat("Point", pointValue);
         animator.SetFloat("Grab", grabValue);
-
-        //if (inputDevice.TryGetFeatureValue(CommonUsages.trigger, out float pointValue))
-        //{
-        //    animator.SetFloat("Point", pointValue);
-        //}
-        //else
-        //{
-        //    animator.SetFloat("Point", 0);
-        //}
-
-        //if (inputDevice.TryGetFeatureValue(CommonUsages.grip, out float grabValue))
-        //{
-        //    animator.SetFloat("Grab", grabValue);
-        //}
-        //else
-        //{
-        //    animator.SetFloat("Grab", 0);
-        //}
     }
 
     private void MapPosition(Transform target, Transform rigTransform)
@@ -111,7 +93,6 @@ public class NetworkPlayer : MonoBehaviour
     {
         gameObject.GetComponent<NetworkPlayer>().randomAva = i;
         gameObject.GetComponent<NetworkPlayer>().ava[i].SetActive(true);
-        print(gameObject.GetComponent<NetworkPlayer>().randomAva + "Terima");
     }
 
 }
