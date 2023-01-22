@@ -8,7 +8,7 @@ public class GetNickname : MonoBehaviourPunCallbacks
 {
     private void Start()
     {
-        photonView.Owner.NickName = "PLAYER " + photonView.Owner.ActorNumber; //Bisa Pakai GetPlayerNumber? or CurrentRoom Players
+        photonView.Owner.NickName = "PLAYER " + photonView.Owner.ActorNumber;
         GetComponent<TextMeshProUGUI>().text = photonView.Owner.NickName;
     }
 }
